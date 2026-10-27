@@ -11699,17 +11699,20 @@ button:has-text("เจ้าหญิง"), span:has-text("เจ้าหญ�
                 const st = state[cur.key];
                 const node = CHAT_SCRIPTS[cur.key].nodes[st.node];
                 const tray = cur.tray;
+                
+                hideTray(); setTimeout(kbClose, 400); return;
+
                 if (!st.busy && (!node || !node.choices || !node.choices.length)) {hideTray(); setTimeout(kbClose, 400); return;}
                 if (st.busy || !cur.scr.classList.contains('kb-on')) {hideTray(); return;}
                 tray.innerHTML = node.choices.map((c, i) =>
                     '<button class="kb-choice" data-i="' + i + '" style="--n:' + i + '"><span>' + E(c.text) + '</span></button>').join('');
                 tray.querySelectorAll('.kb-choice').forEach(b => b.onclick = e => {e.stopPropagation(); choose(+b.dataset.i);});
                 cur.scr.style.setProperty('--trayh', tray.offsetHeight + 'px');
-                cur.area.scrollTop = cur.area.scrollHeight;            // ดันแชทขึ้นมาเหนือช้อยส์ก่อน
+                cur.area.scrollTop = cur.area.scrollHeight;            
                 requestAnimationFrame(() => {
                     if (!alive()) return;
                     cur.area.scrollTop = cur.area.scrollHeight;
-                    tray.classList.add('show');                          // แล้วค่อยให้ช้อยส์ค่อย ๆ ขึ้น
+                    tray.classList.add('show');                        
                 });
             }
 
