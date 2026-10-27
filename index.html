@@ -11,11 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Nunito:wght@600;700;800&display=swap"
         rel="stylesheet">
     <style>
-       
-.chat-suggestions, 
-div[style*="เจ้าหญิง"] {
-    display: none !important;
-}
         :root {
             --phone-width: 340px;
             --phone-height: 700px;
@@ -6003,6 +5998,11 @@ div[style*="เจ้าหญิง"] {
                 box-shadow: 0 0 0 36px rgba(255, 255, 255, 0);
             }
         }
+        
+div[onclick*="เจ้าหญิง"], div[onclick*="ริคุ"], div[onclick*="คุณมาเอะตะ"], 
+button:has-text("เจ้าหญิง"), span:has-text("เจ้าหญิง") {
+    display: none !important;
+}
     </style>
 
     <style id="perf-smooth">
